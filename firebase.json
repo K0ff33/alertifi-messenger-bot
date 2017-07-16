@@ -3,6 +3,8 @@
     "public": "public",
     "rewrites": [ {
       "source": "/api/bigben", "function": "bigben"
+    }, {
+      "source": "/api/search", "function": "search"
     } ]
   }
 }
