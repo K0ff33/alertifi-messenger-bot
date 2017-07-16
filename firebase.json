@@ -1,5 +1,8 @@
 {
   "hosting": {
-    "public": "public"
+    "public": "public",
+    "rewrites": [ {
+      "source": "/api/bigben", "function": "bigben"
+    } ]
   }
 }
