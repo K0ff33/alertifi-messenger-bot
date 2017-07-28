@@ -1,66 +1,193 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/4.1.3/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/4.1.3/firebase-auth.js"></script>
-    <script defer src="/__/firebase/4.1.3/firebase-database.js"></script>
-    <script defer src="/__/firebase/4.1.3/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/4.1.3/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+<head>
+  <title>
+    Alertifi - your personal deal tracker
+  </title>
+  <meta charSet="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/devices.css">
+</head>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>This is the Alertifi website, it will work at some point! :)</p>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+<body>
+  <header class="header">
+    <div class="container-lrg">
+      <div class="col-12 spread">
+        <div>
+          <a class="logo">
+              Alertifi
+            </a>
+        </div>
+        <div>
+          <a class="nav-link" href="https://twitter.com/alertifiapp">
+              Twitter
+            </a>
+          <a class="nav-link" href="https://www.facebook.com/Alertifiapp/">
+              Facebook
+            </a>
+        </div>
+      </div>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+    <div class="container-lrg flex">
+      <div class="col-6 centervertical">
+        <h1 class="heading">
+          Receive instant price drop alerts
+        </h1>
+        <h2 class="paragraph ">
+          <div>Never miss that deal again! Be the first one to know when your&nbsp;favourite item is on sale and stop overpaying
+            when you don't have to.</div>
+          <div><br></div>
+          <div>We're creating the best price tracker that helps you decide when to buy. Sign up to learn more.<br></div>
+        </h2>
+        <div class="ctas">
+          <!-- Begin MailChimp Signup Form -->
+          <div id="mc_embed_signup">
+            <form action="//alerti.us16.list-manage.com/subscribe/post?u=4c27e946c748b707010949bbe&amp;id=0795445e69" method="post" id="mc-embedded-subscribe-form"
+              name="mc-embedded-subscribe-form" class="validate" target="_blank">
+              <div id="mc_embed_signup_scroll">
+                <input type="email" value="" name="EMAIL" class="ctas-input" id="mce-EMAIL" placeholder="Your Email Address" required>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_4c27e946c748b707010949bbe_0795445e69" tabindex="-1" value=""></div>
+                <div class="clear">
+                  <button type="submit" id="mc-embedded-subscribe" class="ctas-button">Sign Up</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!--End mc_embed_signup-->
+        </div>
+      </div>
+      <div class="col-6 sidedevices">
+        <div class="browseriphone">
+          <div class="iphone">
+            <div class="mask">
+              <!-- <img class="mask-img" src="img/mobileapp.svg"> -->
+            </div>
+          </div>
+          <div class="browser">
+            <div class="mask">
+              <!-- <img class="mask-img" src="img/webapp.svg"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="feature3">
+    <div class="container-lrg flex">
+      <div class="col-4">
+        <b class="emoji">
+            🔔
+          </b>
+        <h3 class="subheading">
+          Instant Notifications
+        </h3>
+        <p class="paragraph">
+          Alertifi can be customised to send you instant price drop notifications through modern messaging platforms such as Facebook
+          Messenger, Slack or traditional email.
+        </p>
+      </div>
+      <div class="col-4">
+        <b class="emoji">
+            🛍️
+          </b>
+        <h3 class="subheading">
+          Multiple Stores
+        </h3>
+        <p class="paragraph">
+          Alertifi aims to support your favourite shops including Amazon, eBay, Zalando and many more.
+        </p>
+      </div>
+      <div class="col-4">
+        <b class="emoji">
+            🚀
+          </b>
+        <h3 class="subheading">
+          Rocket Fast
+        </h3>
+        <p class="paragraph">
+          We've designed Alertifi with the aim on speed and scalability to make sure that our customers never miss a deal on a product.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="socialproof">
+    <div class="container-sml">
+      <div class="flex text-center">
+        <div class="col-12">
+          <h4 class="subheading">
+            "Initially, Alertifi was just a little tool I created for myself to keep track of interesting price drops and new deals.
+            Since then, it is powering an increasing number of happy users who saved money on buying at the right time. I
+            hope Alertifi will be useful for you too!"
+          </h4>
+          <p class="paragraph">
+            Kamil Wojtczyk - Founder @ Alertifi
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="container-sml flex text-center">
+      <div class="col-12">
+        <h3 class="heading">
+          Instant price drop notifications
+        </h3>
+        <div class="ctas">
+          <!-- Begin MailChimp Signup Form -->
+          <form action="//alerti.us16.list-manage.com/subscribe/post?u=4c27e946c748b707010949bbe&amp;id=0795445e69" method="post" id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form" class="validate" target="_blank">
+            <div id="mc_embed_signup_scroll">
+              <input type="email" value="" name="EMAIL" class="ctas-input" id="mce-EMAIL" placeholder="Your Email Address" required>
+              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_4c27e946c748b707010949bbe_0795445e69" tabindex="-1" value=""></div>
+              <div class="clear">
+                <button type="submit" id="mc-embedded-subscribe" class="ctas-button">Sign Up</button>
+              </div>
+            </div>
+          </form>
+          <!--End mc_embed_signup-->
+        </div>
+      </div>
+    </div>
+    <div class="container-lrg footer-nav flex">
+      <div class="col-3 vertical">
+        <a class="logo">
+            Alertifi
+          </a>
+        <a class="nav-link2">
+            © 2017
+          </a>
+      </div>
+      <div class="col-3 vertical">
+        <a class="nav-link2" href="#">
+            About
+          </a>
+        <a class="nav-link2" href="#">
+            Features
+          </a>
+        <a class="nav-link2" href="#">
+            Pricing
+          </a>
+      </div>
+      <div class="col-3 vertical">
+        <a class="nav-link2" href="https://twitter.com/alertifiapp">
+            Twitter
+          </a>
+        <a class="nav-link2" href="https://www.facebook.com/Alertifiapp/">
+            Facebook
+          </a>
+        <a class="nav-link2" href="https://m.me/Alertifiapp">
+            Contact
+          </a>
+      </div>
+      <div class="col-3 vertical">
+        Made with ❤️ in UK
+      </div>
+    </div>
+  </div>
+</body>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
 </html>
