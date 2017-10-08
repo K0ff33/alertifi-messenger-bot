@@ -5,14 +5,14 @@ const testFunctions = require('./test')
 const FBTOKEN = functions.config().alertifi['fb-token']
 
 exports.webhook = functions.https.onRequest((req, res) => {
-  var data = req.body
+  let data = req.body
 
     // Make sure this is a page subscription
   if (data.object === 'page') {
       // Iterate over each entry - there may be multiple if batched
     data.entry.forEach(function (entry) {
-      var pageID = entry.id
-      var timeOfEvent = entry.time
+      let pageID = entry.id
+      let timeOfEvent = entry.time
 
         // Iterate over each messaging event
       entry.messaging.forEach(function (event) {
@@ -31,19 +31,19 @@ exports.webhook = functions.https.onRequest((req, res) => {
 })
 
 function receivedMessage (event) {
-  var senderID = event.sender.id
-  var recipientID = event.recipient.id
-  var timeOfMessage = event.timestamp
-  var message = event.message
+  let senderID = event.sender.id
+  let recipientID = event.recipient.id
+  let timeOfMessage = event.timestamp
+  let message = event.message
 
   console.log('Received message for user %d and page %d at %d with message:',
     senderID, recipientID, timeOfMessage)
   console.log(JSON.stringify(message))
 
-  var messageId = message.mid
+  let messageId = message.mid
 
-  var messageText = message.text
-  var messageAttachments = message.attachments
+  let messageText = message.text
+  let messageAttachments = message.attachments
 
   if (messageText) {
     // If we receive a text message, check to see if it matches a keyword
@@ -62,24 +62,24 @@ function receivedMessage (event) {
 }
 
 function receivedPostback (event) {
-  var senderID = event.sender.id
-  var recipientID = event.recipient.id
-  var timeOfPostback = event.timestamp
+  let senderID = event.sender.id
+  let recipientID = event.recipient.id
+  let timeOfPostback = event.timestamp
 
   // The 'payload' param is a developer-defined field which is set in a postback
   // button for Structured Messages.
-  var payload = event.postback.payload
+  let payload = event.postback.payload
 
   console.log("Received postback for user %d and page %d with payload '%s' " +
     'at %d', senderID, recipientID, payload, timeOfPostback)
 
   // When a postback is called, we'll send a message back to the sender to
   // let them know it was successful
-  sendTextMessage(senderID, 'Postback called')
+  sendTextMessage(senderID, `Postback called: ${payload}`)
 }
 
 function sendTextMessage (recipientId, messageText) {
-  var messageData = {
+  let messageData = {
     recipient: {
       id: recipientId
     },
@@ -92,7 +92,7 @@ function sendTextMessage (recipientId, messageText) {
 }
 
 function sendGenericMessage (recipientId) {
-  var messageData = {
+  let messageData = {
     recipient: {
       id: recipientId
     },
@@ -105,7 +105,7 @@ function sendGenericMessage (recipientId) {
             title: 'rift',
             subtitle: 'Next-generation virtual reality',
             item_url: 'https://www.oculus.com/en-us/rift/',
-            image_url: 'http://messengerdemo.parseapp.com/img/rift.png',
+            image_url: 'http://multimedia.bbycastatic.ca/multimedia/products/500x500/104/10460/10460569.jpg',
             buttons: [{
               type: 'web_url',
               url: 'https://www.oculus.com/en-us/rift/',
@@ -119,7 +119,7 @@ function sendGenericMessage (recipientId) {
             title: 'touch',
             subtitle: 'Your Hands, Now in VR',
             item_url: 'https://www.oculus.com/en-us/touch/',
-            image_url: 'http://messengerdemo.parseapp.com/img/touch.png',
+            image_url: 'https://multimedia.bbycastatic.ca/multimedia/products/500x500/105/10509/10509398.jpg',
             buttons: [{
               type: 'web_url',
               url: 'https://www.oculus.com/en-us/touch/',

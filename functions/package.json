@@ -7,5 +7,6 @@
     "firebase-functions": "^0.7.0",
     "got": "^7.1.0"
   },
-  "private": true
+  "private": true,
+  "version": "1.0.0"
 }
