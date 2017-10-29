@@ -22,18 +22,16 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-{{ checksum "funcions/package.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run:
-          command: npm install
-          working_directory: ~/repo/functions
+      - run: npm install --prefix functions
 
       - save_cache:
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - functions/node_modules
+          key: v1-dependencies-{{ checksum "functions/package.json" }}
 
       # Deploy
       - run: firebase deploy --token "$FIREBASE_TOKEN" --non-interactive
