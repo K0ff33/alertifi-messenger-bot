@@ -38,5 +38,3 @@ jobs:
 
       # Deploy
       - run: firebase deploy --token "$FIREBASE_TOKEN" --non-interactive
-
-
