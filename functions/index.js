@@ -11,8 +11,8 @@ const webhook = functions.https.onRequest((req, res) => {
   if (data.object === 'page') {
       // Iterate over each entry - there may be multiple if batched
     data.entry.forEach(function (entry) {
-      let pageID = entry.id
-      let timeOfEvent = entry.time
+      // let pageID = entry.id
+      // let timeOfEvent = entry.time
 
         // Iterate over each messaging event
       entry.messaging.forEach(function (event) {
@@ -27,6 +27,8 @@ const webhook = functions.https.onRequest((req, res) => {
     })
 
     res.sendStatus(200)
+  } else {
+    res.sendStatus(403)
   }
 })
 
@@ -40,10 +42,7 @@ function receivedMessage (event) {
     senderID, recipientID, timeOfMessage)
   console.log(JSON.stringify(message))
 
-  let messageId = message.mid
-
   let messageText = message.text
-  let messageAttachments = message.attachments
 
   if (messageText) {
     // If we receive a text message, check to see if it matches a keyword
@@ -52,30 +51,30 @@ function receivedMessage (event) {
       case 'generic':
         sendGenericMessage(senderID)
         break
-
       default:
         sendTextMessage(senderID, messageText)
     }
-  } else if (messageAttachments) {
-    sendTextMessage(senderID, 'Message with attachment received')
   }
 }
 
+function sendHelloMessage (senderID) {
+  sendTextMessage(senderID, "Hi, I'm Alertifi, your personal online deal tracker. I can track prices of the following websites:")
+  sendGenericMessage(senderID)
+}
+
 function receivedPostback (event) {
-  let senderID = event.sender.id
-  let recipientID = event.recipient.id
-  let timeOfPostback = event.timestamp
+  const {type} = JSON.parse(event.postback.payload)
+  const senderId = event.sender.id
 
-  // The 'payload' param is a developer-defined field which is set in a postback
-  // button for Structured Messages.
-  let payload = event.postback.payload
-
-  console.log("Received postback for user %d and page %d with payload '%s' " +
-    'at %d', senderID, recipientID, payload, timeOfPostback)
-
-  // When a postback is called, we'll send a message back to the sender to
-  // let them know it was successful
-  sendTextMessage(senderID, `Postback called: ${payload}`)
+  // perform an action based on the type of payload received
+  switch (type) {
+    case 'GET_STARTED':
+      sendHelloMessage(senderId)
+      break
+    default:
+      console.error(`Unknown Postback called: ${type}`)
+      break
+  }
 }
 
 function sendTextMessage (recipientId, messageText) {
@@ -102,27 +101,21 @@ function sendGenericMessage (recipientId) {
         payload: {
           template_type: 'generic',
           elements: [{
-            title: 'rift',
-            subtitle: 'Next-generation virtual reality',
-            item_url: 'https://www.oculus.com/en-us/rift/',
-            image_url: 'http://multimedia.bbycastatic.ca/multimedia/products/500x500/104/10460/10460569.jpg',
+            title: 'Amazon UK',
+            item_url: 'https://www.amazon.co.uk/',
+            image_url: 'http://g-ec2.images-amazon.com/images/G/01/social/api-share/amazon_logo_500500.png',
             buttons: [{
               type: 'web_url',
-              url: 'https://www.oculus.com/en-us/rift/',
+              url: 'https://www.amazon.co.uk/',
               title: 'Open Web URL'
-            }, {
-              type: 'postback',
-              title: 'Call Postback',
-              payload: 'Payload for first bubble'
             }]
           }, {
-            title: 'touch',
-            subtitle: 'Your Hands, Now in VR',
-            item_url: 'https://www.oculus.com/en-us/touch/',
-            image_url: 'https://multimedia.bbycastatic.ca/multimedia/products/500x500/105/10509/10509398.jpg',
+            title: 'Ebay',
+            item_url: 'https://www.ebay.co.uk/',
+            image_url: 'https://static.ebayinc.com/static/assets/Uploads/Content/_resampled/FillWyIzMzciLCIxOTAiXQ/eBay-Logo-Preview10.png',
             buttons: [{
               type: 'web_url',
-              url: 'https://www.oculus.com/en-us/touch/',
+              url: 'https://www.ebay.co.uk/',
               title: 'Open Web URL'
             }, {
               type: 'postback',
