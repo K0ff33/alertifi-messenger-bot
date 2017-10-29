@@ -4,7 +4,7 @@ const testFunctions = require('./test')
 
 const FBTOKEN = functions.config().alertifi['fb-token']
 
-exports.webhook = functions.https.onRequest((req, res) => {
+const webhook = functions.https.onRequest((req, res) => {
   let data = req.body
 
     // Make sure this is a page subscription
@@ -159,5 +159,7 @@ function callSendAPI (messageData) {
   })
 }
 
-module.exports.bigben = testFunctions.bigben
-module.exports.search = testFunctions.search
+module.exports = {
+  webhook,
+  bigben: testFunctions.bigben
+}
