@@ -34,6 +34,6 @@ jobs:
           key: v1-dependencies-{{ checksum "functions/package.json" }}
 
       # Deploy
-      - run: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --non-interactive
+      - run: ./functions/node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --non-interactive
 
 
