@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:8.8
+      - image: circleci/node:6.11
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -26,9 +26,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: sudo npm install --quiet --no-progress -g firebase-tools
-
-      - run: npm install --quiet --no-progress --prefix functions
+      - run: cd functions && npm install
 
       - save_cache:
           paths:
@@ -36,6 +34,6 @@ jobs:
           key: v1-dependencies-{{ checksum "functions/package.json" }}
 
       # Deploy
-      - run: firebase deploy --token "$FIREBASE_TOKEN" --non-interactive
+      - run: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --non-interactive
 
 
